@@ -1,26 +1,25 @@
-import { useState } from 'react'
-import { FiberScene } from './components/FiberScene'
-import { ImmersiveViewer } from './components/ImmersiveViewer'
+import { Suspense, lazy, useCallback, useState } from 'react'
+import { Home } from './components/Home'
+import { Landing } from './components/Landing'
 
-type Tab = 'fiber' | 'immersive'
+// The 3D viewer (three.js + react-immersive) is only downloaded when opened.
+const Viewer3D = lazy(() => import('./components/Viewer3D'))
+
+type Page = 'landing' | 'home' | 'viewer'
 
 export default function App() {
-  const [tab, setTab] = useState<Tab>('fiber')
+  const [page, setPage] = useState<Page>('landing')
+  const enter = useCallback(() => setPage('home'), [])
 
   return (
-    <div className="app">
-      <header className="toolbar">
-        <h1>map-react-immersive</h1>
-        <nav>
-          <button className={tab === 'fiber' ? 'active' : ''} onClick={() => setTab('fiber')}>
-            React Three Fiber
-          </button>
-          <button className={tab === 'immersive' ? 'active' : ''} onClick={() => setTab('immersive')}>
-            Immersive Viewer
-          </button>
-        </nav>
-      </header>
-      <main className="stage">{tab === 'fiber' ? <FiberScene /> : <ImmersiveViewer />}</main>
-    </div>
+    <main className="app">
+      {page === 'landing' && <Landing onEnter={enter} />}
+      {page === 'home' && <Home onView3D={() => setPage('viewer')} />}
+      {page === 'viewer' && (
+        <Suspense fallback={<p className="viewer__pending">Preparing the island…</p>}>
+          <Viewer3D onBack={() => setPage('home')} />
+        </Suspense>
+      )}
+    </main>
   )
 }

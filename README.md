@@ -1,7 +1,16 @@
-# map-react-immersive
+# Sri Lanka · Map Concept
 
-React 19 + Vite + TypeScript with three.js, React Three Fiber, drei and
-`@liveroom-tech/react-immersive@5.2.0`.
+An illustrated landing page for Sri Lanka built with React 19, Vite and TypeScript,
+with an interactive 3D view of the island powered by `@liveroom-tech/react-immersive`
+(three.js + React Three Fiber).
+
+## Pages
+
+1. **Landing** – cream paper intro with the island silhouette and an *Enter* button.
+2. **Home** – hand-drawn SVG map of Sri Lanka with nine points of interest and a
+   **View 3D** button.
+3. **3D viewer** – the island model with clickable annotations, a guided tour, and a
+   QR code + website link for each point.
 
 ## Run
 
@@ -10,23 +19,25 @@ npm install
 npm run dev
 ```
 
-`.npmrc` sets `legacy-peer-deps=true` because npm 10.8 crashes resolving this
-dependency tree's peer deps.
+`.npmrc` sets `legacy-peer-deps=true` because npm 10.8 fails to resolve this
+dependency tree's peer dependencies.
 
-## Tabs
+## 3D viewer setup
 
-- **React Three Fiber**: a plain R3F scene (`src/components/FiberScene.tsx`).
-- **Immersive Viewer** (`src/components/ImmersiveViewer.tsx`):
-  - No license key: `SimpleModelViewer` in upload mode. Drag in any GLB/GLTF/OBJ/FBX/USDZ/STL/PLY.
-  - With a license key: the full `ModelViewer` with shadows and the scene objects panel.
+1. Copy `.env.example` to `.env.local` and set `VITE_REACT_IMMERSIVE_LICENSE_KEY`.
+2. Put the model at `public/models/sri-lanka.glb` (it is over GitHub's 100 MB limit,
+   so it is not in the repository).
+3. Restart `npm run dev`.
 
-## Using the full ModelViewer
+## Annotations, tour and QR codes
 
-1. Copy `.env.example` to `.env.local`.
-2. Set `VITE_IMMERSIVE_LICENSE_KEY` to your Liveroom key.
-3. Put your model at `public/model.glb`, or set `VITE_MODEL_URL`.
-4. Restart `npm run dev`.
+Annotation positions come from BindingBuilder (`src/data/viewer/sceneConfig.ts`).
+After changing them, or the model rotation, run:
 
-To control which objects are interactive, generate `objectBindings.json` with
-`BindingBuilder` (`@liveroom-tech/react-immersive/binding-builder`) and pass it
-as `objectBindings`.
+```bash
+npm run annotations
+```
+
+This adds a tour camera view, description, website link and QR code image
+(`public/qr/*.png`) to every annotation. Websites are set in
+`scripts/build-annotations.cjs`.

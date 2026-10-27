@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Claude Code local config
+# Local tool config
 .claude/
+
+# Large 3D model (over GitHub's 100MB file limit)
+public/models/*.glb
