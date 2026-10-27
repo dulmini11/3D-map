@@ -41,11 +41,7 @@ export default function Viewer3D({ onBack }: { onBack: () => void }) {
           onViewerReady={handleReady}
           onLoadError={(error) => console.error('3D model failed to load:', error)}
         />
-      ) : (
-        <p className="viewer__missing">
-          Set <code>VITE_REACT_IMMERSIVE_LICENSE_KEY</code> in <code>.env.local</code> and restart the dev server.
-        </p>
-      )}
+      ) : null}
 
       <button className="viewer__back" onClick={onBack}>
         ← Back to map
