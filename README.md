@@ -25,9 +25,11 @@ dependency tree's peer dependencies.
 ## 3D viewer setup
 
 1. Copy `.env.example` to `.env.local` and set `VITE_REACT_IMMERSIVE_LICENSE_KEY`.
-2. Put the model at `public/models/sri-lanka.glb` (it is over GitHub's 100 MB limit,
-   so it is not in the repository).
-3. Restart `npm run dev`.
+2. Restart `npm run dev`.
+
+The model is `public/models/sri-lanka.glb` (textures converted to WebP to keep it under
+GitHub's 100 MB file limit). ModelViewer needs a production-enabled Liveroom plan with
+the site's domain registered to run anywhere other than localhost.
 
 ## Annotations, tour and QR codes
 
