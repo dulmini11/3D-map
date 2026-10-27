@@ -359,8 +359,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -127.419,
-          -57.163,
-          101.844
+          -38.163,
+          106.594
         ],
         "target": [
           -127.419,
@@ -411,8 +411,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -74.307,
-          -57.239,
-          110.895
+          -38.239,
+          115.645
         ],
         "target": [
           -74.307,
@@ -463,8 +463,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -132.565,
-          -122.913,
-          135.141
+          -96.913,
+          141.641
         ],
         "target": [
           -132.565,
@@ -515,8 +515,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -89.151,
-          18.46,
-          107.698
+          36.46,
+          112.198
         ],
         "target": [
           -89.151,
@@ -567,8 +567,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -95.179,
-          0.172,
-          93.789
+          17.172,
+          98.039
         ],
         "target": [
           -95.179,
@@ -619,8 +619,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -114.214,
-          97.341,
-          91.111
+          113.341,
+          95.111
         ],
         "target": [
           -114.214,
@@ -671,8 +671,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -27.157,
-          -74.779,
-          98.678
+          -56.779,
+          103.178
         ],
         "target": [
           -27.157,
@@ -723,8 +723,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -113.681,
-          51.295,
-          134.882
+          77.295,
+          141.382
         ],
         "target": [
           -113.681,
@@ -775,8 +775,8 @@ export const sceneConfig: SceneConfig = {
       "cameraView": {
         "position": [
           -124.98,
-          -1.642,
-          106.288
+          17.358,
+          111.038
         ],
         "target": [
           -124.98,

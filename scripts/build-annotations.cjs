@@ -71,9 +71,9 @@ const STOPS = {
   },
 }
 
-// Camera direction in the model's frame: mostly straight out of the island's
-// surface (+y), tipped ~20° toward the south (+z) so landmarks show some depth.
-const VIEW_DIR = [0, 0.94, 0.34]
+// Camera direction in the model's frame: almost straight out of the island's
+// surface (+y), tipped ~8° toward the south (+z) so landmarks keep a little depth.
+const VIEW_DIR = [0, 0.99, 0.14]
 
 // Same as three.js Euler 'XYZ' (the viewer's model rotation), applied to a vector.
 function rotate([x, y, z], [rxDeg, ryDeg, rzDeg]) {
