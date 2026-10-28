@@ -1,8 +1,9 @@
 import '@liveroom-tech/react-immersive/styles.css'
 import { useCallback, useRef } from 'react'
-import { ModelViewer, type ViewerReadyState } from '@liveroom-tech/react-immersive'
+import { ModelViewer, useViewerEffects, type ViewerReadyState } from '@liveroom-tech/react-immersive'
 import { Euler, MathUtils, Vector3 } from 'three'
 import { PLACES } from '../data/sriLanka'
+import { startSceneAnimations } from './sceneAnimations'
 import { objectBindings } from '../data/viewer/objectBindings'
 import { sceneConfig } from '../data/viewer/sceneConfig'
 
@@ -37,10 +38,25 @@ export default function Viewer3D({ onBack }: { onBack: () => void }) {
   // onViewerReady fires again during tours and other state changes, so only
   // set the opening shot the first time or it would undo every tour move.
   const framed = useRef(false)
+  const animated = useRef(false)
+  const effects = useViewerEffects()
+  const effectsRef = useRef(effects)
+  effectsRef.current = effects
+
   const handleReady = useCallback((viewer: ViewerReadyState) => {
-    if (framed.current) return
-    framed.current = true
-    viewer.raw.controls.setLookAt(...START_POSITION, ...START_TARGET, true)
+    effectsRef.current.handleViewerReady(viewer)
+    if (!framed.current) {
+      framed.current = true
+      viewer.raw.controls.setLookAt(...START_POSITION, ...START_TARGET, true)
+    }
+    // The first ready call can arrive before the model's nodes are registered,
+    // so start the animations on the first call that actually has them.
+    if (!animated.current && Object.keys(viewer.raw.nodes).length > 0) {
+      animated.current = true
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        startSceneAnimations(viewer, effectsRef.current)
+      }
+    }
   }, [])
 
   return (
