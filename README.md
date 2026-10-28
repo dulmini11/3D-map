@@ -4,7 +4,7 @@ An illustrated landing page for Sri Lanka built with React 19, Vite and TypeScri
 with an interactive 3D view of the island powered by `@liveroom-tech/react-immersive`
 (three.js + React Three Fiber).
 
-## Pages
+### Pages
 
 1. **Landing** – cream paper intro with the island silhouette and an *Enter* button.
 2. **Home** – hand-drawn SVG map of Sri Lanka with nine points of interest and a
