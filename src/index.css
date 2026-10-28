@@ -382,6 +382,65 @@ body:has(.viewer)::after {
   color: var(--red);
 }
 
+/* 3D map pins: replaces the viewer's numbered circles with glowing QR pins.
+   The pin's tip sits on the annotation point; names hang just below it.
+   Per-pin --pin-qr, --pin-en and --pin-si come from Viewer3D. */
+.viewer .ri-annotationMarker {
+  width: 56px;
+  height: 70px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background:
+    var(--pin-qr, none) 12px 11px / 32px 32px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 70'%3E%3Cpath d='M28 68C28 68 4 45 4 27A24 24 0 1 1 52 27C52 45 28 68 28 68Z' fill='%23ffffff' fill-opacity='0.92' stroke='%2393e6ff' stroke-width='3'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 0 6px rgba(120, 220, 255, 0.85)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+  transform: translateY(-34px);
+  transform-origin: 50% 97%;
+}
+
+.viewer .ri-annotationMarker:hover,
+.viewer .ri-annotationMarker--hovered {
+  background:
+    var(--pin-qr, none) 12px 11px / 32px 32px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 70'%3E%3Cpath d='M28 68C28 68 4 45 4 27A24 24 0 1 1 52 27C52 45 28 68 28 68Z' fill='%23ffffff' stroke='%2393e6ff' stroke-width='3'/%3E%3C/svg%3E") center / contain no-repeat;
+  box-shadow: none;
+  transform: translateY(-34px) scale(1.12);
+  filter: drop-shadow(0 0 10px rgba(120, 220, 255, 1)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+}
+
+.viewer .ri-annotationMarker-id {
+  display: none;
+}
+
+/* Bring a hovered pin in front of neighbours that overlap it. */
+.viewer .annotation-html-wrapper:hover {
+  z-index: 50 !important;
+}
+
+.viewer .ri-annotationMarker::before,
+.viewer .ri-annotationMarker::after {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 0 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.viewer .ri-annotationMarker::before {
+  content: var(--pin-en, '');
+  top: calc(100% + 2px);
+  font: 600 14px/1.1 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.viewer .ri-annotationMarker::after {
+  content: var(--pin-si, '');
+  top: calc(100% + 19px);
+  font: 600 13px/1.2 'Noto Sans Sinhala', 'Nirmala UI', 'Iskoola Pota', sans-serif;
+}
+
 /* -------------------------------------------------------------------- Map */
 
 .map {

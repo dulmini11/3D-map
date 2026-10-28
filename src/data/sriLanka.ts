@@ -40,6 +40,8 @@ const KELANI: LonLat[] = [[80.45, 6.98], [80.25, 6.97], [80.05, 6.96], [79.87, 6
 export type Place = {
   id: string
   name: string
+  /** Short English and Sinhala names for the 3D map pins. */
+  pin: { en: string; si: string }
   lonLat: LonLat
   region: string
   note: string
@@ -48,15 +50,15 @@ export type Place = {
 
 // The same nine points as the annotations in the 3D scene (src/data/viewer/sceneConfig.ts).
 export const PLACES: Place[] = [
-  { id: 'lotus-tower', name: 'Lotus Tower - Colombo', lonLat: [79.86, 6.93], region: 'Western', label: 'right', note: 'South Asia’s tallest tower, a lotus bud rising 350 m over the capital.' },
-  { id: 'yala', name: 'Yala National Park', lonLat: [81.4, 6.37], region: 'Southern', label: 'left', note: 'Scrub jungle and rock outcrops, home to one of the world’s densest leopard populations.' },
-  { id: 'southern', name: 'Southern Province', lonLat: [80.62, 6.2], region: 'Southern', label: 'left', note: 'Golden beaches, the Galle Fort ramparts and whale-watching off Mirissa.' },
-  { id: 'anuradhapura', name: 'Anuradhapura', lonLat: [80.41, 8.31], region: 'North Central', label: 'right', note: 'The first great capital, its giant dagobas rising over the dry-zone plains.' },
-  { id: 'polonnaruwa', name: 'Polonnaruwa', lonLat: [81.0, 7.94], region: 'North Central', label: 'right', note: 'A medieval royal city of palaces, reservoirs and the carved Buddhas of Gal Vihara.' },
-  { id: 'point-pedro', name: 'Point Pedro', lonLat: [80.23, 9.83], region: 'Northern', label: 'right', note: 'The northernmost tip of the island, marked by its lighthouse.' },
-  { id: 'batticaloa', name: 'Batticaloa', lonLat: [81.7, 7.73], region: 'Eastern', label: 'left', note: 'A lagoon town on the east coast, famous for its “singing fish”.' },
-  { id: 'northern', name: 'Northern Province', lonLat: [80.4, 9.1], region: 'Northern', label: 'right', note: 'Palmyra palms, Hindu kovils and the lagoons of the Jaffna peninsula.' },
-  { id: 'wilpattu', name: 'Wilpattu National Park', lonLat: [80.02, 8.45], region: 'North Western', label: 'left', note: 'The island’s largest national park, dotted with natural lakes called “villus”.' },
+  { id: 'lotus-tower', name: 'Lotus Tower - Colombo', pin: { en: 'Lotus Tower', si: 'නෙළුම් කුළුණ' }, lonLat: [79.86, 6.93], region: 'Western', label: 'right', note: 'South Asia’s tallest tower, a lotus bud rising 350 m over the capital.' },
+  { id: 'yala', name: 'Yala National Park', pin: { en: 'Yala', si: 'යාල' }, lonLat: [81.4, 6.37], region: 'Southern', label: 'left', note: 'Scrub jungle and rock outcrops, home to one of the world’s densest leopard populations.' },
+  { id: 'southern', name: 'Southern Province', pin: { en: 'Southern Province', si: 'දකුණු පළාත' }, lonLat: [80.62, 6.2], region: 'Southern', label: 'left', note: 'Golden beaches, the Galle Fort ramparts and whale-watching off Mirissa.' },
+  { id: 'anuradhapura', name: 'Anuradhapura', pin: { en: 'Anuradhapura', si: 'අනුරාධපුරය' }, lonLat: [80.41, 8.31], region: 'North Central', label: 'right', note: 'The first great capital, its giant dagobas rising over the dry-zone plains.' },
+  { id: 'polonnaruwa', name: 'Polonnaruwa', pin: { en: 'Polonnaruwa', si: 'පොළොන්නරුව' }, lonLat: [81.0, 7.94], region: 'North Central', label: 'right', note: 'A medieval royal city of palaces, reservoirs and the carved Buddhas of Gal Vihara.' },
+  { id: 'point-pedro', name: 'Point Pedro', pin: { en: 'Point Pedro', si: 'පේදුරුතුඩුව' }, lonLat: [80.23, 9.83], region: 'Northern', label: 'right', note: 'The northernmost tip of the island, marked by its lighthouse.' },
+  { id: 'batticaloa', name: 'Batticaloa', pin: { en: 'Batticaloa', si: 'මඩකලපුව' }, lonLat: [81.7, 7.73], region: 'Eastern', label: 'left', note: 'A lagoon town on the east coast, famous for its “singing fish”.' },
+  { id: 'northern', name: 'Northern Province', pin: { en: 'Northern Province', si: 'උතුරු පළාත' }, lonLat: [80.4, 9.1], region: 'Northern', label: 'right', note: 'Palmyra palms, Hindu kovils and the lagoons of the Jaffna peninsula.' },
+  { id: 'wilpattu', name: 'Wilpattu National Park', pin: { en: 'Wilpattu', si: 'විල්පත්තුව' }, lonLat: [80.02, 8.45], region: 'North Western', label: 'left', note: 'The island’s largest national park, dotted with natural lakes called “villus”.' },
 ]
 
 export const WATER_LABELS: { text: string; lonLat: LonLat; size: number; rotate?: number }[] = [
