@@ -8,8 +8,6 @@ import { objectBindings } from '../data/viewer/objectBindings'
 import { sceneConfig } from '../data/viewer/sceneConfig'
 
 const MODEL_URL = '/models/sri-lanka.glb'
-// Liveroom license key, hard-coded so every build has it (it is domain-bound and
-// visible in the browser bundle anyway).
 const LICENSE_KEY = 'TYYC-Q7SX-TTPL-LAKJ'
 
 // Opening shot: the whole island, seen almost straight on with a slight tilt from
